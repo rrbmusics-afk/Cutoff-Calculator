@@ -72,7 +72,7 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Locks viewport securely on mobile screens */
+            overflow-x: hidden;
         }
 
         body {
@@ -81,6 +81,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            min-height: 100vh;
         }
 
         /* Ambient Decorative Glows */
@@ -153,14 +154,14 @@
             fill: var(--text-primary);
         }
 
-        /* Viewport Containment Framework */
+        /* Android Mobile Fluid Framework */
         main {
             flex: 1;
             width: 100%;
             padding: 0.75rem 1.25rem;
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Strict structure containment */
+            gap: 0.75rem;
         }
 
         /* Glassmorphism Unified Platform Form Container */
@@ -205,12 +206,12 @@
 
         .input-wrapper input {
             width: 100%;
-            padding: 0.55rem 0.65rem;
+            padding: 0.65rem 0.65rem;
             border-radius: 8px;
             border: 1.5px solid var(--card-border);
             background: var(--input-bg);
             color: var(--text-primary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
             outline: none;
         }
@@ -240,9 +241,16 @@
         }
 
         /* Engine Operation Switches */
+        .btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.25rem;
+        }
+
         .btn {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.85rem;
             border: none;
             border-radius: 10px;
             font-size: 0.9rem;
@@ -252,7 +260,7 @@
             justify-content: center;
             align-items: center;
             gap: 0.5rem;
-            margin-top: 0.25rem;
+            text-decoration: none;
         }
 
         .btn-primary {
@@ -261,7 +269,13 @@
             box-shadow: 0 4px 12px var(--glow);
         }
 
-        .btn-primary:active {
+        .btn-secondary {
+            background: rgba(14, 165, 233, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+        }
+
+        .btn:active {
             transform: scale(0.98);
         }
 
@@ -282,12 +296,10 @@
 
         /* Dedicated Results Architecture Display Block Below */
         .results-wrapper {
-            flex: 1;
-            margin-top: 0.75rem;
             position: relative;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            min-height: 180px;
         }
 
         .placeholder-state {
@@ -295,7 +307,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
+            margin: auto;
             color: var(--text-secondary);
             text-align: center;
             font-size: 0.8rem;
@@ -462,6 +474,7 @@
             font-size: 0.7rem;
             color: var(--text-secondary);
             background: var(--card-bg);
+            margin-top: auto;
             z-index: 10;
         }
         
@@ -518,10 +531,16 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary" id="compute-btn">
-                    <span class="btn-default-text">Calculate Cutoff</span>
-                    <span class="btn-loading-text"><span class="spinner"></span>Calculating...</span>
-                </button>
+                <div class="btn-stack">
+                    <button type="submit" class="btn btn-primary" id="compute-btn">
+                        <span class="btn-default-text">Calculate Cutoff</span>
+                        <span class="btn-loading-text"><span class="spinner"></span>Calculating...</span>
+                    </button>
+                    <a href="https://rrbmusics-afk.github.io/Percentage-calculator/" class="btn btn-secondary" target="_blank" rel="noopener">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:2px;"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5.03 5.47l1.06-1.06 4.5 4.5-4.5 4.5-1.06-1.06 2.69-2.69H9v-1.5h7.19l-2.69-2.69z"/></svg>
+                        12th Percentage Calculator
+                    </a>
+                </div>
             </form>
         </section>
 
@@ -544,7 +563,7 @@
 
                 <div class="breakdown-box">
                     <div class="breakdown-row"><span>Mathematics (Max 100)</span><span id="bd-maths">0.00</span></div>
-                    <div class="breakdown-row"><span>Physics + Chemistry Matrix (/2)</span><span id="bd-sciences">0.00</span></div>
+                    <div class="breakdown-row"><span>Physics + Chemistry Matrix ((Phy + Chem) / 2)</span><span id="bd-sciences">0.00</span></div>
                     <div class="breakdown-row"><span>Percentage Equivalent</span><span id="res-percentage">0.00%</span></div>
                 </div>
 
@@ -554,19 +573,4 @@
                         Copy
                     </button>
                     <button class="btn-action" id="act-share">
-                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
-                        Share
-                    </button>
-                    <button class="btn-action" id="act-export">
-                        <svg viewBox="0 0 24 24"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/></svg>
-                        Export
-                    </button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div class="toast-container" id="toast-vault"></div>
-
-    <footer>
-        <div class="footer-brand">Aethercore Interacti
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11
