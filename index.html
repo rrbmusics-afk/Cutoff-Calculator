@@ -169,28 +169,43 @@
             opacity: 0.9;
         }
 
-        /* Redesigned Premium Dynamic Accessory Buttons Grid */
+        /* Combined Utility Module Wrapper */
+        .utility-section-container {
+            margin-top: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .utility-section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            font-weight: 700;
+            opacity: 0.8;
+        }
+
         .utility-links-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.65rem;
             width: 100%;
-            margin-top: auto;
-            padding: 0.5rem 0;
         }
 
         .btn-secondary {
-            padding: 0.6rem 0.75rem;
+            padding: 0.65rem 0.5rem;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             background: rgba(255, 255, 255, 0.03);
             color: var(--text-secondary);
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             letter-spacing: -0.01em;
-            gap: 0.35rem;
-            white-space: nowrap;
+            text-align: center;
         }
 
         .btn-secondary:active {
@@ -357,13 +372,16 @@
             </div>
         </section>
 
-        <div class="utility-links-grid">
-            <a href="https://rrbmusics-afk.github.io/Percentage-calculator/" class="btn btn-secondary" target="_blank" rel="noopener">
-                📊 Percentage Calc
-            </a>
-            <a href="https://sharanmusician.com/Scientific-calculator-/" class="btn btn-secondary" target="_blank" rel="noopener">
-                🔬 Scientific Calc
-            </a>
+        <div class="utility-section-container">
+            <div class="utility-section-title">Additional Examination Tools</div>
+            <div class="utility-links-grid">
+                <a href="https://rrbmusics-afk.github.io/Percentage-calculator/" class="btn btn-secondary" target="_blank" rel="noopener">
+                    Percentage Calculator
+                </a>
+                <a href="https://sharanmusician.com/Scientific-calculator-/" class="btn btn-secondary" target="_blank" rel="noopener">
+                    Scientific Calculator
+                </a>
+            </div>
         </div>
     </main>
 
