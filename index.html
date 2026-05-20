@@ -27,7 +27,7 @@
         :root {
             /* Light Mode Variables */
             --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.85);
             --card-border: rgba(255, 255, 255, 0.6);
             --text-primary: #1e293b;
             --text-secondary: #64748b;
@@ -39,14 +39,13 @@
             --danger: #ef4444;
             --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
             --input-bg: rgba(255, 255, 255, 0.9);
-            --history-card: rgba(255, 255, 255, 0.5);
             --glow: rgba(99, 102, 241, 0.1);
         }
 
         [data-theme="dark"] {
             /* Dark Mode Variables */
             --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-bg: rgba(30, 41, 59, 0.65);
             --card-border: rgba(255, 255, 255, 0.05);
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
@@ -58,7 +57,6 @@
             --danger: #f87171;
             --shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
             --input-bg: rgba(15, 23, 42, 0.4);
-            --history-card: rgba(15, 23, 42, 0.25);
             --glow: rgba(129, 140, 248, 0.15);
         }
 
@@ -74,7 +72,7 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Prevent scrolling, fully locked single viewport */
+            overflow: hidden; /* Locks viewport securely on mobile screens */
         }
 
         body {
@@ -155,18 +153,17 @@
             fill: var(--text-primary);
         }
 
-        /* Unified Single Screen Workspace Layout */
+        /* Viewport Containment Framework */
         main {
             flex: 1;
             width: 100%;
             padding: 0.75rem 1.25rem;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            overflow: hidden; /* Strictly containment */
+            overflow: hidden; /* Strict structure containment */
         }
 
-        /* Glassmorphism UI Cards */
+        /* Glassmorphism Unified Platform Form Container */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
@@ -175,23 +172,12 @@
             border-radius: 16px;
             padding: 1rem;
             box-shadow: var(--shadow);
-            position: relative;
-        }
-
-        .form-card {
-            z-index: 2;
-        }
-
-        .output-card {
-            flex: 1;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            overflow: hidden;
-            z-index: 1;
         }
 
-        /* Highly Compact Core Grid Layout */
+        /* Compact Layout Entry System Matrix */
         .form-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -209,8 +195,6 @@
             color: var(--text-secondary);
             margin-bottom: 0.25rem;
             white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .input-wrapper {
@@ -235,7 +219,7 @@
             border-color: var(--primary);
         }
 
-        /* Compact Error Reporting Layout */
+        /* Compact Inline Data Verification Alerts */
         .validation-msg {
             font-size: 0.65rem;
             font-weight: 600;
@@ -255,7 +239,7 @@
             transform: translateY(0);
         }
 
-        /* Action Buttons Elements */
+        /* Engine Operation Switches */
         .btn {
             width: 100%;
             padding: 0.75rem;
@@ -296,7 +280,16 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Diagnostic States Architecture Layout */
+        /* Dedicated Results Architecture Display Block Below */
+        .results-wrapper {
+            flex: 1;
+            margin-top: 0.75rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
         .placeholder-state {
             display: flex;
             flex-direction: column;
@@ -358,7 +351,7 @@
             margin-top: 0.15rem;
         }
 
-        /* Tier Predictions Badges System */
+        /* Classification Node Arrays */
         .prediction-badge {
             padding: 0.4rem;
             border-radius: 8px;
@@ -373,13 +366,17 @@
         .tier-moderate { background: rgba(245, 158, 11, 0.12); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.2); }
         .tier-limited { background: rgba(239, 68, 68, 0.12); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.2); }
 
-        /* Calculation Breakdown Table Block */
+        /* Computation Details Grid */
         .breakdown-box {
-            background: var(--history-card);
+            background: rgba(15, 23, 42, 0.05);
             border-radius: 10px;
             padding: 0.5rem 0.75rem;
             margin-bottom: 0.5rem;
             border: 1px dashed var(--card-border);
+        }
+
+        [data-theme="dark"] .breakdown-box {
+            background: rgba(15, 23, 42, 0.25);
         }
 
         .breakdown-row {
@@ -391,12 +388,12 @@
 
         .breakdown-row:last-child {
             margin-bottom: 0;
-            padding-top: 0.2 / rem;
+            padding-top: 0.2rem;
             border-top: 1px solid var(--card-border);
             font-weight: 700;
         }
 
-        /* Interactive Action Vectors Toolset */
+        /* Action Suite Matrix */
         .action-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -404,7 +401,7 @@
         }
 
         .btn-action {
-            background: var(--history-card);
+            background: rgba(15, 23, 42, 0.03);
             border: 1px solid var(--card-border);
             color: var(--text-primary);
             padding: 0.4rem;
@@ -418,13 +415,17 @@
             gap: 0.15rem;
         }
 
+        [data-theme="dark"] .btn-action {
+            background: rgba(15, 23, 42, 0.2);
+        }
+
         .btn-action svg {
             width: 14px;
             height: 14px;
             fill: var(--text-secondary);
         }
 
-        /* Floating Overlay Notification Modals */
+        /* Alert Overlay Engine */
         .toast-container {
             position: fixed;
             bottom: 3rem;
@@ -488,8 +489,8 @@
     </header>
 
     <main>
-        <!-- Capture Form Section Card -->
-        <section class="card form-card">
+        <!-- Metric Parameters Capture Module Unit -->
+        <section class="card">
             <form id="cutoff-form" novalidate>
                 <div class="form-grid">
                     <div class="form-group">
@@ -524,26 +525,26 @@
             </form>
         </section>
 
-        <!-- Engine Output Presentation Card -->
-        <section class="card output-card" id="output-card">
+        <!-- Dynamic Results Architecture View (Securely Below Form Controls) -->
+        <section class="card results-wrapper" id="output-card">
             <div class="placeholder-state" id="placeholder">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"></path>
                 </svg>
-                <p>Enter your marks above to display your calculated TNEA cutoff score.</p>
+                <p>Enter your marks above to display your calculated TNEA cutoff score here.</p>
             </div>
 
             <div id="result-content">
                 <div class="result-display">
                     <div class="cutoff-value" id="res-cutoff">0.00</div>
-                    <div class="cutoff-label">Your TNEA Cutoff</div>
+                    <div class="cutoff-label">Your Calculated Cutoff</div>
                 </div>
 
                 <div class="prediction-badge" id="res-badge">Evaluating Score Matrix...</div>
 
                 <div class="breakdown-box">
                     <div class="breakdown-row"><span>Mathematics (Max 100)</span><span id="bd-maths">0.00</span></div>
-                    <div class="breakdown-row"><span>Physics + Chemistry (Max 100)</span><span id="bd-sciences">0.00</span></div>
+                    <div class="breakdown-row"><span>Physics + Chemistry Matrix (/2)</span><span id="bd-sciences">0.00</span></div>
                     <div class="breakdown-row"><span>Percentage Equivalent</span><span id="res-percentage">0.00%</span></div>
                 </div>
 
@@ -568,8 +569,4 @@
     <div class="toast-container" id="toast-vault"></div>
 
     <footer>
-        <div class="footer-brand">Aethercore Interactive</div>
-        <div>v4.1.0 // Engine Clean</div>
-    </footer>
-
-    
+        <div class="footer-brand">Aethercore Interacti
