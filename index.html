@@ -6,7 +6,7 @@
     <title>TNEA Cutoff Calculator | Aethercore Interactive</title>
     
     <!-- SEO & Metadata -->
-    <meta name="description" content="Calculate your Tamil Nadu Engineering Admissions (TNEA) cutoff instantly. Premium, high-accuracy calculator with admission predictions and history tracking.">
+    <meta name="description" content="Calculate your Tamil Nadu Engineering Admissions (TNEA) cutoff instantly. Premium, high-accuracy calculator with admission predictions.">
     <meta name="keywords" content="TNEA, Cutoff Calculator, Tamil Nadu Engineering Admission, Anna University, Engineering Cutoff">
     <meta name="author" content="Aethercore Interactive">
     
@@ -74,7 +74,7 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Lock viewport scrolling on mobile screens */
+            overflow: hidden; /* Prevent scrolling, fully locked single viewport */
         }
 
         body {
@@ -97,10 +97,10 @@
         .ambient-glow-1 { top: -20%; left: -20%; }
         .ambient-glow-2 { bottom: -20%; right: -20%; }
 
-        /* Unified Fixed Header */
+        /* Branding Corporate Header Layout */
         header {
             width: 100%;
-            padding: 0.85rem 1.25rem;
+            padding: 0.75rem 1.25rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -108,25 +108,39 @@
             z-index: 10;
         }
 
+        .brand-block {
+            display: flex;
+            flex-direction: column;
+        }
+
         .brand {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             font-weight: 800;
             font-size: 1.1rem;
             letter-spacing: -0.02em;
+            line-height: 1;
         }
 
         .brand svg {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             fill: var(--primary);
+        }
+
+        .brand-subtitle {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+            letter-spacing: 0.02em;
         }
 
         .theme-toggle {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 0.5rem;
+            padding: 0.45rem;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -136,73 +150,52 @@
         }
 
         .theme-toggle svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
             fill: var(--text-primary);
         }
 
-        /* Single Screen Optimized Viewport Grid */
+        /* Unified Single Screen Workspace Layout */
         main {
             flex: 1;
             width: 100%;
-            padding: 1rem 1.25rem;
-            display: grid;
-            grid-template-rows: auto 1fr;
-            gap: 1rem;
-            overflow: hidden; /* Container strictly limits sizing */
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            overflow: hidden; /* Strictly containment */
         }
 
-        @media (min-width: 768px) {
-            main {
-                grid-template-rows: 1fr;
-                grid-template-columns: 1.1fr 1fr;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-            .history-section {
-                grid-column: 1 / -1;
-            }
-        }
-
-        /* Glassmorphism Presentation Panel */
+        /* Glassmorphism UI Cards */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 1.25rem;
+            border-radius: 16px;
+            padding: 1rem;
             box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
             position: relative;
         }
 
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.01em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .form-card {
+            z-index: 2;
         }
 
-        /* Condensed Form Layout to eliminate scrolling needs */
+        .output-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Highly Compact Core Grid Layout */
         .form-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.65rem;
-        }
-
-        @media (min-width: 480px) {
-            .form-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .form-group-full {
-                grid-column: span 2;
-            }
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
         }
 
         .form-group {
@@ -211,10 +204,13 @@
 
         .form-group label {
             display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             color: var(--text-secondary);
             margin-bottom: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .input-wrapper {
@@ -225,13 +221,13 @@
 
         .input-wrapper input {
             width: 100%;
-            padding: 0.65rem 1rem;
-            border-radius: 10px;
+            padding: 0.55rem 0.65rem;
+            border-radius: 8px;
             border: 1.5px solid var(--card-border);
             background: var(--input-bg);
             color: var(--text-primary);
-            font-size: 0.95rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 700;
             outline: none;
         }
 
@@ -239,24 +235,19 @@
             border-color: var(--primary);
         }
 
-        .input-wrapper .unit {
-            position: absolute;
-            right: 0.85rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-        }
-
-        /* Compact Inline Field Validations */
+        /* Compact Error Reporting Layout */
         .validation-msg {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             color: var(--danger);
             margin-top: 0.15rem;
-            height: 14px;
+            height: 12px;
             opacity: 0;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             transition: all 0.2s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .validation-msg.visible {
@@ -264,20 +255,20 @@
             transform: translateY(0);
         }
 
-        /* Interface Action Buttons */
+        /* Action Buttons Elements */
         .btn {
             width: 100%;
-            padding: 0.85rem;
+            padding: 0.75rem;
             border: none;
-            border-radius: 12px;
-            font-size: 0.95rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 0.5rem;
-            margin-top: 0.5rem;
+            margin-top: 0.25rem;
         }
 
         .btn-primary {
@@ -295,8 +286,8 @@
         .loading .btn-loading-text { display: flex; align-items: center; gap: 0.5rem; }
 
         .spinner {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border: 2px solid rgba(255,255,255,0.3);
             border-top-color: #fff;
             border-radius: 50%;
@@ -305,31 +296,25 @@
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Output Configuration State Panel */
-        #output-card {
-            overflow: hidden;
-            position: relative;
-        }
-
+        /* Diagnostic States Architecture Layout */
         .placeholder-state {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100%;
-            min-height: 180px;
             color: var(--text-secondary);
             text-align: center;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             padding: 1rem;
         }
 
         .placeholder-state svg {
-            width: 44px;
-            height: 44px;
+            width: 36px;
+            height: 36px;
             stroke: var(--text-secondary);
             opacity: 0.3;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         #result-content {
@@ -341,45 +326,46 @@
 
         #result-content.visible {
             display: flex;
-            animation: fadeIn 0.4s ease forwards;
+            animation: fadeIn 0.3s ease forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .result-display {
             text-align: center;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .cutoff-value {
-            font-size: 3.25rem;
+            font-size: 3rem;
             font-weight: 800;
             letter-spacing: -0.03em;
             background: linear-gradient(45deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1.1;
+            line-height: 1;
         }
 
         .cutoff-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--text-secondary);
             font-weight: 700;
+            margin-top: 0.15rem;
         }
 
-        /* Tier Allocation Engine Styles */
+        /* Tier Predictions Badges System */
         .prediction-badge {
-            padding: 0.5rem;
-            border-radius: 10px;
+            padding: 0.4rem;
+            border-radius: 8px;
             text-align: center;
             font-weight: 700;
-            font-size: 0.8rem;
-            margin-bottom: 0.65rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .tier-top { background: rgba(16, 185, 129, 0.12); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2); }
@@ -387,92 +373,92 @@
         .tier-moderate { background: rgba(245, 158, 11, 0.12); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.2); }
         .tier-limited { background: rgba(239, 68, 68, 0.12); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.2); }
 
-        /* Computation Breakdown Display Grid */
+        /* Calculation Breakdown Table Block */
         .breakdown-box {
             background: var(--history-card);
-            border-radius: 12px;
-            padding: 0.65rem 0.85rem;
-            margin-bottom: 0.75rem;
+            border-radius: 10px;
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 0.5rem;
             border: 1px dashed var(--card-border);
         }
 
         .breakdown-row {
             display: flex;
             justify-content: space-between;
-            font-size: 0.75rem;
-            margin-bottom: 0.25rem;
+            font-size: 0.7rem;
+            margin-bottom: 0.2rem;
         }
 
         .breakdown-row:last-child {
             margin-bottom: 0;
-            padding-top: 0.25rem;
+            padding-top: 0.2 / rem;
             border-top: 1px solid var(--card-border);
             font-weight: 700;
         }
 
-        /* Performance Operations Grid */
+        /* Interactive Action Vectors Toolset */
         .action-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .btn-action {
             background: var(--history-card);
             border: 1px solid var(--card-border);
             color: var(--text-primary);
-            padding: 0.45rem;
-            border-radius: 10px;
-            font-size: 0.75rem;
+            padding: 0.4rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.2rem;
+            gap: 0.15rem;
         }
 
         .btn-action svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             fill: var(--text-secondary);
         }
 
-        /* Overlay Toast Engine System */
+        /* Floating Overlay Notification Modals */
         .toast-container {
             position: fixed;
-            bottom: 3.5rem;
+            bottom: 3rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
             width: calc(100% - 2.5rem);
-            max-width: 320px;
+            max-width: 300px;
         }
 
         .toast {
             background: var(--text-primary);
             color: var(--input-bg);
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
-            font-size: 0.8rem;
+            padding: 0.6rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
             font-weight: 600;
             text-align: center;
             box-shadow: var(--shadow);
-            margin-top: 0.5rem;
-            animation: toastIn 0.25s ease-out forwards;
+            margin-top: 0.4rem;
+            animation: toastIn 0.2s ease-out forwards;
         }
 
-        @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes toastIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Minimal Fixed Footer Execution */
+        /* Fixed Navigation System Footer */
         footer {
             width: 100%;
-            padding: 0.65rem 1.25rem;
+            padding: 0.5rem 1.25rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--card-border);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-secondary);
             background: var(--card-bg);
             z-index: 10;
@@ -487,87 +473,78 @@
     <div class="ambient-glow-2"></div>
 
     <header>
-        <div class="brand">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99zM13 16h-2v2h2v-2zm0-6h-2v4h2v-4z"/>
-            </svg>
-            <span>AETHERCORE</span>
+        <div class="brand-block">
+            <div class="brand">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99zM13 16h-2v2h2v-2zm0-6h-2v4h2v-4z"/>
+                </svg>
+                <span>AETHERCORE</span>
+            </div>
+            <div class="brand-subtitle">TNEA Cutoff Calculator</div>
         </div>
-        <button class="theme-toggle" id="theme-btn" aria-label="Toggle Global Theme Color">
+        <button class="theme-toggle" id="theme-btn" aria-label="Toggle Global Interface Theme">
             <svg id="theme-icon" viewBox="0 0 24 24"></svg>
         </button>
     </header>
 
     <main>
-        <!-- Capture Module Unit -->
-        <section class="card">
-            <h2 class="card-title">Metrics Engine</h2>
+        <!-- Capture Form Section Card -->
+        <section class="card form-card">
             <form id="cutoff-form" novalidate>
                 <div class="form-grid">
-                    <div class="form-group form-group-full">
-                        <label for="student-name">Candidate Name <span style="font-weight:400; opacity:0.5;">(Optional)</span></label>
-                        <div class="input-wrapper">
-                            <input type="text" id="student-name" placeholder="Candidate Identifier" autocomplete="off">
-                        </div>
-                        <div class="validation-msg" id="v-name"></div>
-                    </div>
-
                     <div class="form-group">
-                        <label for="maths">Mathematics Score</label>
+                        <label for="maths">Maths</label>
                         <div class="input-wrapper">
-                            <input type="number" id="maths" placeholder="0 - 100" min="0" max="100" step="any" inputmode="decimal" required>
-                            <span class="unit">/ 100</span>
+                            <input type="number" id="maths" placeholder="0-100" min="0" max="100" step="any" inputmode="decimal" required>
                         </div>
                         <div class="validation-msg" id="v-maths"></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="physics">Physics Score</label>
+                        <label for="physics">Physics</label>
                         <div class="input-wrapper">
-                            <input type="number" id="physics" placeholder="0 - 100" min="0" max="100" step="any" inputmode="decimal" required>
-                            <span class="unit">/ 100</span>
+                            <input type="number" id="physics" placeholder="0-100" min="0" max="100" step="any" inputmode="decimal" required>
                         </div>
                         <div class="validation-msg" id="v-physics"></div>
                     </div>
 
-                    <div class="form-group form-group-full">
-                        <label for="chemistry">Chemistry Score</label>
+                    <div class="form-group">
+                        <label for="chemistry">Chemistry</label>
                         <div class="input-wrapper">
-                            <input type="number" id="chemistry" placeholder="0 - 100" min="0" max="100" step="any" inputmode="decimal" required>
-                            <span class="unit">/ 100</span>
+                            <input type="number" id="chemistry" placeholder="0-100" min="0" max="100" step="any" inputmode="decimal" required>
                         </div>
                         <div class="validation-msg" id="v-chemistry"></div>
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary" id="compute-btn">
-                    <span class="btn-default-text">Process Analysis</span>
-                    <span class="btn-loading-text"><span class="spinner"></span>Processing...</span>
+                    <span class="btn-default-text">Calculate Cutoff</span>
+                    <span class="btn-loading-text"><span class="spinner"></span>Calculating...</span>
                 </button>
             </form>
         </section>
 
-        <!-- Dynamic Intelligence Diagnostic Panel -->
-        <section class="card" id="output-card">
+        <!-- Engine Output Presentation Card -->
+        <section class="card output-card" id="output-card">
             <div class="placeholder-state" id="placeholder">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"></path>
                 </svg>
-                <p>Provide score matrices above to execute your TNEA cutoff diagnostic calculation.</p>
+                <p>Enter your marks above to display your calculated TNEA cutoff score.</p>
             </div>
 
             <div id="result-content">
                 <div class="result-display">
                     <div class="cutoff-value" id="res-cutoff">0.00</div>
-                    <div class="cutoff-label">Aggregated TNEA Cutoff</div>
+                    <div class="cutoff-label">Your TNEA Cutoff</div>
                 </div>
 
-                <div class="prediction-badge" id="res-badge">Evaluating Tier...</div>
+                <div class="prediction-badge" id="res-badge">Evaluating Score Matrix...</div>
 
                 <div class="breakdown-box">
-                    <div class="breakdown-row"><span>Mathematics (100% Weight)</span><span id="bd-maths">0.00</span></div>
-                    <div class="breakdown-row"><span>Physics + Chemistry Matrix (/2)</span><span id="bd-sciences">0.00</span></div>
-                    <div class="breakdown-row"><span>Total Core Engineering Ratio</span><span id="res-percentage">0.00%</span></div>
+                    <div class="breakdown-row"><span>Mathematics (Max 100)</span><span id="bd-maths">0.00</span></div>
+                    <div class="breakdown-row"><span>Physics + Chemistry (Max 100)</span><span id="bd-sciences">0.00</span></div>
+                    <div class="breakdown-row"><span>Percentage Equivalent</span><span id="res-percentage">0.00%</span></div>
                 </div>
 
                 <div class="action-grid">
@@ -576,4 +553,23 @@
                         Copy
                     </button>
                     <button class="btn-action" id="act-share">
-          
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        Share
+                    </button>
+                    <button class="btn-action" id="act-export">
+                        <svg viewBox="0 0 24 24"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/></svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast-container" id="toast-vault"></div>
+
+    <footer>
+        <div class="footer-brand">Aethercore Interactive</div>
+        <div>v4.1.0 // Engine Clean</div>
+    </footer>
+
+    
