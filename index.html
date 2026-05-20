@@ -169,31 +169,34 @@
             opacity: 0.9;
         }
 
-        /* Redesigned Premium Aesthetic Anchor Element */
-        .action-link-container {
-            display: flex;
-            justify-content: center;
+        /* Redesigned Premium Dynamic Accessory Buttons Grid */
+        .utility-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.65rem;
             width: 100%;
             margin-top: auto;
             padding: 0.5rem 0;
         }
 
         .btn-secondary {
-            padding: 0.55rem 1rem;
+            padding: 0.6rem 0.75rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            background: rgba(56, 189, 248, 0.08);
-            color: var(--accent);
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            letter-spacing: 0.01em;
-            gap: 0.4rem;
+            letter-spacing: -0.01em;
+            gap: 0.35rem;
+            white-space: nowrap;
         }
 
         .btn-secondary:active {
-            background: rgba(56, 189, 248, 0.18);
-            border-color: rgba(56, 189, 248, 0.35);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: var(--text-primary);
             transform: scale(0.96);
         }
 
@@ -354,9 +357,12 @@
             </div>
         </section>
 
-        <div class="action-link-container">
+        <div class="utility-links-grid">
             <a href="https://rrbmusics-afk.github.io/Percentage-calculator/" class="btn btn-secondary" target="_blank" rel="noopener">
-                📊 12th Percentage Calculator
+                📊 Percentage Calc
+            </a>
+            <a href="https://sharanmusician.com/Scientific-calculator-/" class="btn btn-secondary" target="_blank" rel="noopener">
+                🔬 Scientific Calc
             </a>
         </div>
     </main>
