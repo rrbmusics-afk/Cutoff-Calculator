@@ -17,6 +17,8 @@
             --text-secondary: #94a3b8;
             --primary: #818cf8;
             --accent: #38bdf8;
+            --danger: #f87171;
+            --danger-bg: rgba(248, 113, 113, 0.1);
             --shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
             --input-bg: rgba(15, 23, 42, 0.4);
         }
@@ -87,7 +89,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.6rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .form-group {
@@ -119,6 +121,27 @@
 
         .input-wrapper input:focus {
             border-color: var(--primary);
+        }
+
+        /* Premium Application Error Notification Area */
+        .error-banner {
+            display: none;
+            background: var(--danger-bg);
+            border: 1px solid rgba(248, 113, 113, 0.2);
+            color: var(--danger);
+            border-radius: 10px;
+            padding: 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: shake 0.2s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
         }
 
         .btn {
@@ -268,6 +291,8 @@
                 </div>
             </div>
 
+            <div class="error-banner" id="error-box"></div>
+
             <button type="button" class="btn btn-primary" id="compute-btn">Calculate Cutoff</button>
         </section>
 
@@ -301,15 +326,25 @@
     </footer>
 
     <script>
+        const errorBox = document.getElementById('error-box');
+        const inputs = ['maths', 'physics', 'chemistry'];
+
+        // Auto-clear custom error messages if user types anything inside fields
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                errorBox.style.setProperty('display', 'none');
+            });
+        });
+
         document.getElementById('compute-btn').addEventListener('click', () => {
-            // Read values directly from inputs
             const mInput = document.getElementById('maths').value.trim();
             const pInput = document.getElementById('physics').value.trim();
             const cInput = document.getElementById('chemistry').value.trim();
 
-            // Validate that inputs are completely filled
+            // Strict internal programmatic application check
             if (mInput === '' || pInput === '' || cInput === '') {
-                alert('Please input values for all fields before calculation.');
+                errorBox.innerText = '⚠️ Operational Error: Please populate all fields above.';
+                errorBox.style.setProperty('display', 'block', 'important');
                 return;
             }
 
@@ -317,22 +352,30 @@
             const p = parseFloat(pInput) || 0;
             const c = parseFloat(cInput) || 0;
 
-            // Strict Formula Processing Pipeline
+            if (m > 100 || p > 100 || c > 100 || m < 0 || p < 0 || c < 0) {
+                errorBox.innerText = '⚠️ Operational Error: Entry parameters must be between 0 and 100.';
+                errorBox.style.setProperty('display', 'block', 'important');
+                return;
+            }
+
+            // Calculations execution sequence
             const scienceComponent = (p + c) / 2;
             const cutoff = m + scienceComponent;
             const percentage = (cutoff / 200) * 100;
 
-            // Unhide presentation view layers explicitly bypassing CSS engines
+            // Clear any error states if calculations are valid
+            errorBox.style.setProperty('display', 'none');
+
+            // Force print metrics inside safe structural areas below
             document.getElementById('placeholder').style.setProperty('display', 'none', 'important');
             document.getElementById('result-content').style.setProperty('display', 'flex', 'important');
 
-            // Force output printing elements immediately
             document.getElementById('res-cutoff').innerText = cutoff.toFixed(2);
             document.getElementById('bd-maths').innerText = m.toFixed(2);
             document.getElementById('bd-sciences').innerText = scienceComponent.toFixed(2);
             document.getElementById('res-percentage').innerText = percentage.toFixed(2) + '%';
 
-            // Cleanly clear keyboard focus handles across Android view ports
+            // Safe mobile dynamic keyboard collapse execution
             if(document.activeElement) {
                 document.activeElement.blur();
             }
