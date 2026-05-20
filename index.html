@@ -144,23 +144,24 @@
         }
 
         .btn {
-            width: 100%;
-            padding: 1rem;
             border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 700;
             cursor: pointer;
-            display: flex;
+            display: inline-flex;
             justify-content: center;
             align-items: center;
             text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
         }
 
         .btn-primary {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
             background: var(--primary);
             color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .btn-primary:active {
@@ -168,15 +169,32 @@
             opacity: 0.9;
         }
 
-        .btn-secondary {
-            background: rgba(14, 165, 233, 0.15);
-            color: var(--accent);
-            border: 1px solid rgba(14, 165, 233, 0.3);
+        /* Redesigned Premium Aesthetic Anchor Element */
+        .action-link-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
             margin-top: auto;
+            padding: 0.5rem 0;
+        }
+
+        .btn-secondary {
+            padding: 0.55rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: rgba(56, 189, 248, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            letter-spacing: 0.01em;
+            gap: 0.4rem;
         }
 
         .btn-secondary:active {
-            background: rgba(14, 165, 233, 0.3);
+            background: rgba(56, 189, 248, 0.18);
+            border-color: rgba(56, 189, 248, 0.35);
+            transform: scale(0.96);
         }
 
         .placeholder-state {
@@ -336,9 +354,11 @@
             </div>
         </section>
 
-        <a href="https://rrbmusics-afk.github.io/Percentage-calculator/" class="btn btn-secondary" target="_blank" rel="noopener">
-            📊 12th Percentage Calculator
-        </a>
+        <div class="action-link-container">
+            <a href="https://rrbmusics-afk.github.io/Percentage-calculator/" class="btn btn-secondary" target="_blank" rel="noopener">
+                📊 12th Percentage Calculator
+            </a>
+        </div>
     </main>
 
     <footer>
