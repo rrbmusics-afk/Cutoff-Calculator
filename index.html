@@ -10,11 +10,6 @@
     <meta name="keywords" content="TNEA, Cutoff Calculator, Tamil Nadu Engineering Admission, Anna University, Engineering Cutoff">
     <meta name="author" content="Aethercore Interactive">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="TNEA Cutoff Calculator | Aethercore Interactive">
-    <meta property="og:description" content="Calculate your Tamil Nadu Engineering Admissions (TNEA) cutoff instantly with our enterprise-grade predictive tool.">
-    
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
     
@@ -25,28 +20,10 @@
 
     <style>
         :root {
-            /* Light Mode Variables */
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(255, 255, 255, 0.6);
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --accent: #0ea5e9;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            --input-bg: rgba(255, 255, 255, 0.9);
-            --glow: rgba(99, 102, 241, 0.1);
-        }
-
-        [data-theme="dark"] {
-            /* Dark Mode Variables */
+            /* Theme Variables */
             --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-            --card-bg: rgba(30, 41, 59, 0.65);
-            --card-border: rgba(255, 255, 255, 0.05);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.06);
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
             --primary: #818cf8;
@@ -55,9 +32,26 @@
             --success: #34d399;
             --warning: #fbbf24;
             --danger: #f87171;
-            --shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3);
+            --shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
             --input-bg: rgba(15, 23, 42, 0.4);
             --glow: rgba(129, 140, 248, 0.15);
+        }
+
+        [data-theme="light"] {
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(15, 23, 42, 0.08);
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --accent: #0ea5e9;
+            --success: #10b981;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --glow: rgba(79, 70, 229, 0.1);
         }
 
         * {
@@ -65,46 +59,43 @@
             margin: 0;
             padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.25s ease, border-color 0.25s ease;
             -webkit-tap-highlight-color: transparent;
         }
 
         html, body {
             width: 100%;
-            height: 100%;
-            overflow-x: hidden;
+            min-height: 100vh;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
         }
 
         body {
-            background: var(--bg-gradient);
-            color: var(--text-primary);
             display: flex;
             flex-direction: column;
             position: relative;
-            min-height: 100vh;
+            padding-bottom: env(safe-area-inset-bottom, 0px);
         }
 
-        /* Ambient Decorative Glows */
-        .ambient-glow-1, .ambient-glow-2 {
+        /* Ambient Glow Features Optimized for Performance */
+        .ambient-glow {
             position: fixed;
-            width: 60vw;
-            height: 60vw;
+            width: 80vw;
+            height: 80vw;
             background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
             z-index: -1;
             pointer-events: none;
+            top: -30%;
+            left: -20%;
         }
-        .ambient-glow-1 { top: -20%; left: -20%; }
-        .ambient-glow-2 { bottom: -20%; right: -20%; }
 
-        /* Branding Corporate Header Layout */
         header {
             width: 100%;
-            padding: 0.75rem 1.25rem;
+            padding: 1rem 1.25rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--card-border);
-            z-index: 10;
         }
 
         .brand-block {
@@ -115,16 +106,16 @@
         .brand {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             letter-spacing: -0.02em;
             line-height: 1;
         }
 
         .brand svg {
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             fill: var(--primary);
         }
 
@@ -132,14 +123,14 @@
             font-size: 0.75rem;
             font-weight: 600;
             color: var(--text-secondary);
-            margin-top: 0.2rem;
+            margin-top: 0.25rem;
             letter-spacing: 0.02em;
         }
 
         .theme-toggle {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 0.45rem;
+            padding: 0.5rem;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -149,90 +140,84 @@
         }
 
         .theme-toggle svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             fill: var(--text-primary);
         }
 
-        /* Android Mobile Fluid Framework */
+        /* Android Layout Grid System */
         main {
             flex: 1;
             width: 100%;
-            padding: 0.75rem 1.25rem;
+            padding: 1rem 1.25rem;
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 1rem;
+            max-width: 540px;
+            margin: 0 auto;
         }
 
-        /* Glassmorphism Unified Platform Form Container */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            padding: 1rem;
+            padding: 1.25rem;
             box-shadow: var(--shadow);
             width: 100%;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
             display: flex;
             flex-direction: column;
         }
 
-        /* Compact Layout Entry System Matrix */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-        }
-
-        .form-group {
-            position: relative;
-        }
-
         .form-group label {
-            display: block;
             font-size: 0.75rem;
             font-weight: 700;
             color: var(--text-secondary);
-            margin-bottom: 0.25rem;
-            white-space: nowrap;
-        }
-
-        .input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         .input-wrapper input {
             width: 100%;
-            padding: 0.65rem 0.65rem;
-            border-radius: 8px;
+            padding: 0.75rem 0.5rem;
+            border-radius: 10px;
             border: 1.5px solid var(--card-border);
             background: var(--input-bg);
             color: var(--text-primary);
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             font-weight: 700;
+            text-align: center;
             outline: none;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .input-wrapper input:focus {
             border-color: var(--primary);
+            background: var(--card-bg);
         }
 
-        /* Compact Inline Data Verification Alerts */
         .validation-msg {
             font-size: 0.65rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--danger);
-            margin-top: 0.15rem;
-            height: 12px;
+            margin-top: 0.25rem;
+            min-height: 14px;
             opacity: 0;
             transform: translateY(-2px);
             transition: all 0.2s ease;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            text-align: center;
         }
 
         .validation-msg.visible {
@@ -240,20 +225,12 @@
             transform: translateY(0);
         }
 
-        /* Engine Operation Switches */
-        .btn-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.25rem;
-        }
-
         .btn {
             width: 100%;
-            padding: 0.85rem;
+            padding: 0.95rem;
             border: none;
-            border-radius: 10px;
-            font-size: 0.9rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
             display: flex;
@@ -261,45 +238,52 @@
             align-items: center;
             gap: 0.5rem;
             text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .btn-primary {
             background: var(--primary);
             color: #ffffff;
-            box-shadow: 0 4px 12px var(--glow);
         }
 
-        .btn-secondary {
-            background: rgba(14, 165, 233, 0.15);
-            color: var(--accent);
-            border: 1px solid rgba(14, 165, 233, 0.3);
-        }
-
-        .btn:active {
+        .btn-primary:active {
+            background: var(--primary-hover);
             transform: scale(0.98);
         }
 
-        .btn-loading-text { display: none; }
-        .loading .btn-default-text { display: none; }
-        .loading .btn-loading-text { display: flex; align-items: center; gap: 0.5rem; }
+        .btn-secondary {
+            background: rgba(14, 165, 233, 0.12);
+            color: var(--accent);
+            border: 1px solid rgba(14, 165, 233, 0.25);
+            margin-top: 0.25rem;
+        }
+
+        .btn-secondary:active {
+            background: rgba(14, 165, 233, 0.25);
+        }
 
         .spinner {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             border: 2px solid rgba(255,255,255,0.3);
             border-top-color: #fff;
             border-radius: 50%;
             animation: spin 0.6s linear infinite;
+            display: none;
         }
+
+        .loading .spinner { display: inline-block; }
+        .loading .btn-text { display: none; }
 
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Dedicated Results Architecture Display Block Below */
+        /* Dynamic Result Area View Configuration */
         .results-wrapper {
-            position: relative;
+            min-height: 160px;
             display: flex;
             flex-direction: column;
-            min-height: 180px;
+            justify-content: center;
+            position: relative;
         }
 
         .placeholder-state {
@@ -307,70 +291,63 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin: auto;
             color: var(--text-secondary);
             text-align: center;
-            font-size: 0.8rem;
-            padding: 1rem;
+            font-size: 0.85rem;
+            padding: 1.5rem;
+            gap: 0.5rem;
         }
 
         .placeholder-state svg {
-            width: 36px;
-            height: 36px;
+            width: 42px;
+            height: 42px;
             stroke: var(--text-secondary);
-            opacity: 0.3;
-            margin-bottom: 0.4rem;
+            opacity: 0.4;
         }
 
         #result-content {
             display: none;
             flex-direction: column;
-            justify-content: center;
-            height: 100%;
+            animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        #result-content.visible {
-            display: flex;
-            animation: fadeIn 0.3s ease forwards;
-        }
+        #result-content.visible { display: flex; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .result-display {
             text-align: center;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.6rem;
         }
 
         .cutoff-value {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.04em;
             background: linear-gradient(45deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1;
+            line-height: 1.1;
         }
 
         .cutoff-label {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
             color: var(--text-secondary);
             font-weight: 700;
-            margin-top: 0.15rem;
         }
 
-        /* Classification Node Arrays */
         .prediction-badge {
-            padding: 0.4rem;
-            border-radius: 8px;
+            padding: 0.5rem;
+            border-radius: 10px;
             text-align: center;
             font-weight: 700;
-            font-size: 0.75rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.75rem;
         }
 
         .tier-top { background: rgba(16, 185, 129, 0.12); color: var(--success); border: 1px solid rgba(16, 185, 129, 0.2); }
@@ -378,12 +355,11 @@
         .tier-moderate { background: rgba(245, 158, 11, 0.12); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.2); }
         .tier-limited { background: rgba(239, 68, 68, 0.12); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.2); }
 
-        /* Computation Details Grid */
         .breakdown-box {
             background: rgba(15, 23, 42, 0.05);
-            border-radius: 10px;
-            padding: 0.5rem 0.75rem;
-            margin-bottom: 0.5rem;
+            border-radius: 12px;
+            padding: 0.75rem;
+            margin-bottom: 0.75rem;
             border: 1px dashed var(--card-border);
         }
 
@@ -394,37 +370,36 @@
         .breakdown-row {
             display: flex;
             justify-content: space-between;
-            font-size: 0.7rem;
-            margin-bottom: 0.2rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.35rem;
         }
 
         .breakdown-row:last-child {
             margin-bottom: 0;
-            padding-top: 0.2rem;
+            padding-top: 0.35rem;
             border-top: 1px solid var(--card-border);
             font-weight: 700;
         }
 
-        /* Action Suite Matrix */
         .action-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
         .btn-action {
             background: rgba(15, 23, 42, 0.03);
             border: 1px solid var(--card-border);
             color: var(--text-primary);
-            padding: 0.4rem;
-            border-radius: 8px;
-            font-size: 0.7rem;
+            padding: 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.15rem;
+            gap: 0.25rem;
         }
 
         [data-theme="dark"] .btn-action {
@@ -432,50 +407,49 @@
         }
 
         .btn-action svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             fill: var(--text-secondary);
         }
 
-        /* Alert Overlay Engine */
+        /* Native Android UI Toast notifications */
         .toast-container {
             position: fixed;
-            bottom: 3rem;
+            bottom: 4rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
             width: calc(100% - 2.5rem);
-            max-width: 300px;
+            max-width: 320px;
+            pointer-events: none;
         }
 
         .toast {
             background: var(--text-primary);
             color: var(--input-bg);
-            padding: 0.6rem 0.85rem;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-align: center;
             box-shadow: var(--shadow);
-            margin-top: 0.4rem;
-            animation: toastIn 0.2s ease-out forwards;
+            margin-top: 0.5rem;
+            animation: toastIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
-        @keyframes toastIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes toastIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Fixed Navigation System Footer */
         footer {
             width: 100%;
-            padding: 0.5rem 1.25rem;
+            padding: 1rem 1.25rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--card-border);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             background: var(--card-bg);
             margin-top: auto;
-            z-index: 10;
         }
         
         .footer-brand { font-weight: 700; }
@@ -483,8 +457,7 @@
 </head>
 <body data-theme="dark">
 
-    <div class="ambient-glow-1"></div>
-    <div class="ambient-glow-2"></div>
+    <div class="ambient-glow"></div>
 
     <header>
         <div class="brand-block">
@@ -502,14 +475,14 @@
     </header>
 
     <main>
-        <!-- Metric Parameters Capture Module Unit -->
+        <!-- Form Controls Block (Keeps and retains numbers) -->
         <section class="card">
-            <form id="cutoff-form" novalidate>
+            <form id="cutoff-form" novalidate onsubmit="return false;">
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="maths">Maths</label>
                         <div class="input-wrapper">
-                            <input type="number" id="maths" placeholder="0-100" min="0" max="100" step="any" inputmode="decimal" required>
+                            <input type="number" id="maths" placeholder="0" min="0" max="100" step="any" inputmode="decimal" required>
                         </div>
                         <div class="validation-msg" id="v-maths"></div>
                     </div>
@@ -517,7 +490,7 @@
                     <div class="form-group">
                         <label for="physics">Physics</label>
                         <div class="input-wrapper">
-                            <input type="number" id="physics" placeholder="0-100" min="0" max="100" step="any" inputmode="decimal" required>
+                            <input type="number" id="physics" placeholder="0" min="0" max="100" step="any" inputmode="decimal" required>
                         </div>
                         <div class="validation-msg" id="v-physics"></div>
                     </div>
@@ -525,46 +498,40 @@
                     <div class="form-group">
                         <label for="chemistry">Chemistry</label>
                         <div class="input-wrapper">
-                            <input type="number" id="chemistry" placeholder="0-100" min="0" max="100" step="any" inputmode="decimal" required>
+                            <input type="number" id="chemistry" placeholder="0" min="0" max="100" step="any" inputmode="decimal" required>
                         </div>
                         <div class="validation-msg" id="v-chemistry"></div>
                     </div>
                 </div>
 
-                <div class="btn-stack">
-                    <button type="submit" class="btn btn-primary" id="compute-btn">
-                        <span class="btn-default-text">Calculate Cutoff</span>
-                        <span class="btn-loading-text"><span class="spinner"></span>Calculating...</span>
-                    </button>
-                    <a href="https://rrbmusics-afk.github.io/Percentage-calculator/" class="btn btn-secondary" target="_blank" rel="noopener">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:2px;"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5.03 5.47l1.06-1.06 4.5 4.5-4.5 4.5-1.06-1.06 2.69-2.69H9v-1.5h7.19l-2.69-2.69z"/></svg>
-                        12th Percentage Calculator
-                    </a>
-                </div>
+                <button type="button" class="btn btn-primary" id="compute-btn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Calculate Cutoff</span>
+                </button>
             </form>
         </section>
 
-        <!-- Dynamic Results Architecture View (Securely Below Form Controls) -->
+        <!-- Dynamic Results Architectural Display Card -->
         <section class="card results-wrapper" id="output-card">
             <div class="placeholder-state" id="placeholder">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z"></path>
                 </svg>
-                <p>Enter your marks above to display your calculated TNEA cutoff score here.</p>
+                <p>Calculated marks and analysis parameters will generate here below.</p>
             </div>
 
             <div id="result-content">
                 <div class="result-display">
                     <div class="cutoff-value" id="res-cutoff">0.00</div>
-                    <div class="cutoff-label">Your Calculated Cutoff</div>
+                    <div class="cutoff-label">Calculated Cutoff</div>
                 </div>
 
-                <div class="prediction-badge" id="res-badge">Evaluating Score Matrix...</div>
+                <div class="prediction-badge" id="res-badge">Evaluating Matrix...</div>
 
                 <div class="breakdown-box">
-                    <div class="breakdown-row"><span>Mathematics (Max 100)</span><span id="bd-maths">0.00</span></div>
-                    <div class="breakdown-row"><span>Physics + Chemistry Matrix ((Phy + Chem) / 2)</span><span id="bd-sciences">0.00</span></div>
-                    <div class="breakdown-row"><span>Percentage Equivalent</span><span id="res-percentage">0.00%</span></div>
+                    <div class="breakdown-row"><span>Mathematics Marks (Kept as is)</span><span id="bd-maths">0.00</span></div>
+                    <div class="breakdown-row"><span>Physics + Chem Matrix ((Phy + Chem) / 2)</span><span id="bd-sciences">0.00</span></div>
+                    <div class="breakdown-row"><span>Total Core Percentage</span><span id="res-percentage">0.00%</span></div>
                 </div>
 
                 <div class="action-grid">
@@ -573,4 +540,34 @@
                         Copy
                     </button>
                     <button class="btn-action" id="act-share">
-                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                        Share
+                    </button>
+                    <button class="btn-action" id="act-export">
+                        <svg viewBox="0 0 24 24"><path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z"/></svg>
+                        Export
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Navigation External Route (Always anchored explicitly at the bottom) -->
+        <a href="https://rrbmusics-afk.github.io/Percentage-calculator/" class="btn btn-secondary" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5.03 5.47l1.06-1.06 4.5 4.5-4.5 4.5-1.06-1.06 2.69-2.69H9v-1.5h7.19l-2.69-2.69z"/></svg>
+            12th Percentage Calculator
+        </a>
+    </main>
+
+    <div class="toast-container" id="toast-vault"></div>
+
+    <footer>
+        <div class="footer-brand">Aethercore Interactive</div>
+        <div>v4.5.0 // Mobile Optimized</div>
+    </footer>
+
+    <script>
+        const StorageMarksKey = 'AETHER_MARKS_RETAINED';
+        const StorageThemeKey = 'AETHER_THEME_GLOBAL';
+
+        const UI = {
+            themeBtn: document.get
